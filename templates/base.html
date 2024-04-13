@@ -12,7 +12,19 @@
   <body>
     <nav>
       <ul>
-        <li><a href="{% url 'tasks:index' %}">タスク一覧</a></li>
+        <!-- ここから -->
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'tasks:index' %}">Lista blog</a></li>
+        <li><a href="{% url 'user_detail' user.pk %}">Información de miembro</a></li>    <!-- 追記 -->
+        <li><form id="logoutForm" method="post" action="{% url 'logout' %}" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" style="background: none; border: none; padding: 0; font: inherit; cursor: pointer; color: white; margin-top: 13px;">Cerrar sesión</button>
+      </form></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Iniciar sesion</a></li>
+        <li><a href="{% url 'signup' %}">Registro</a></li>
+        {% endif %}
+        <!-- ここまで -->
       </ul>
     </nav>
     <main>
