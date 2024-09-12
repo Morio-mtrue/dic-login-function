@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import Task
 from .forms import TaskCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -11,7 +12,7 @@ def index(request):
     }
     return render(request, 'tasks/index.html', params)
 
-
+@login_required 
 def create(request):
     if (request.method == 'POST'):
         title = request.POST['title']
