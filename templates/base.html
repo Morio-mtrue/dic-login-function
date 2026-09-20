@@ -12,7 +12,14 @@
   <body>
     <nav>
       <ul>
-        <li><a href="{% url 'tasks:index' %}">タスク一覧</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'tasks:index' %}">Task list</a></li>
+          <li><a href="{% url 'accounts:detail' %}">Member Information</a></li>
+          <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+        {% else %}
+          <li><a href="{% url 'accounts:signup' %}">Member Registration</a></li>
+          <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        {% endif %}
       </ul>
     </nav>
     <main>
