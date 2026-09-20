@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <h1>Member Information Details Page</h1>
+  <dl>
+    <dt>username</dt>
+    <dd>{{ user_data.username }}</dd>
+    <dt>Email address</dt>
+    <dd>{{ user_data.email }}</dd>
+    <dt>age</dt>
+    <dd>{{ user_data.age }}</dd>
+  </dl>
+  <ul>
+    <li><a href="{% url 'accounts:edit' %}">edit</a></li>
+    <li><a href="{% url 'accounts:password_change' %}">Change Password</a></li>
+  </ul>
+{% endblock %}

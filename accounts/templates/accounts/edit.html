@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <h1>Member Information Edit Page</h1>
+  <form action="{% url 'accounts:edit' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
+  <ul>
+    <li><a href="{% url 'tasks:index' %}">Return</a></li>
+    <li><a href="{% url 'accounts:delete' %}">withdrawal from a group</a></li>
+  </ul>
+{% endblock %}

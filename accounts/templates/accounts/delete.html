@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <h1>Unsubscribe Page</h1>
+  <dl>
+    <dt>username</dt>
+    <dd>{{ user_data.username }}</dd>
+    <dt>Email address</dt>
+    <dd>{{ user_data.email }}</dd>
+    <dt>age</dt>
+    <dd>{{ user_data.age }}</dd>
+  </dl>
+  <form action="{% url 'accounts:delete' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Withdraw</button>
+  </form>
+  <ul>
+    <li><a href="{% url 'accounts:detail' %}">Return</a></li>
+  </ul>
+{% endblock %}
