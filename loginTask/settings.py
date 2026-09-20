@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks.apps.TasksConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,12 @@ USE_TZ = True
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 STATIC_URL = 'static/'
+
+# Authentication
+AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'tasks:index'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
